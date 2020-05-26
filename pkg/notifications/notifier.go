@@ -5,6 +5,7 @@ import (
 	"github.com/johntdyer/slackrus"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"github.com/gregdel/pushover"
 )
 
 // Notifier can send log output as notification to admins, with optional batching.
@@ -40,6 +41,8 @@ func NewNotifier(c *cobra.Command) *Notifier {
 			tn = newMsTeamsNotifier(c, acceptedLogLevels)
 		case gotifyType:
 			tn = newGotifyNotifier(c, acceptedLogLevels)
+		case pushoverType:
+			tn = newPushoverNotifier(c, acceptedLogLevels)
 		default:
 			log.Fatalf("Unknown notification type %q", t)
 		}
