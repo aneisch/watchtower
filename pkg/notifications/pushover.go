@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	slackType = "pushover"
+	pushoverType = "pushover"
 )
 
 type pushoverTypeNotifier struct {
