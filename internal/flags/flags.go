@@ -121,7 +121,7 @@ func RegisterNotificationFlags(rootCmd *cobra.Command) {
 		"notifications",
 		"n",
 		viper.GetStringSlice("WATCHTOWER_NOTIFICATIONS"),
-		" notification types to send (valid: email, slack, msteams, gotify)")
+		" notification types to send (valid: email, slack, msteams, gotify, pushover)")
 
 	flags.StringP(
 		"notifications-level",
@@ -238,7 +238,12 @@ Should only be used for testing.
 		"",
 		viper.GetString("WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN"),
 		"The Gotify Application required to query the Gotify API")
-}
+	
+	flags.StringP(
+		"notification-pushover-app",
+		"",
+		viper.GetString("WATCHTOWER_NOTIFICATION_PUSHOVER_APP"),
+		"The pushover token")}
 
 // SetDefaults provides default values for environment variables
 func SetDefaults() {
